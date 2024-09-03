@@ -240,6 +240,9 @@
         </div>
 
       </div>
+      <div>
+      <button id="downloadPDF">Download Resume as PDF</button>
+    </div>
     </section><!-- End Resume Section -->
 
     <!-- ======= Portfolio Section ======= -->
@@ -351,7 +354,24 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    document.getElementById('downloadPDF').addEventListener('click', function () {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+  
+      doc.html(document.querySelector('#resume'), {
+        callback: function (doc) {
+          doc.save('Resume_Arun_Neupane.pdf');
+        },
+        x: 10,
+        y: 10,
+        width: 190,
+        windowWidth: 800
+      });
+    });
+  </script>
+  
 </body>
 
 </html>
